@@ -12,28 +12,20 @@
 
     <section>
         <div class="APIcontainer">
-            <h1>ESTUDOS API</h1>
-            <img src="img/study.png" width="100" class="imgCenter">
-            <p>Gerencie categorias e tarefas. <br> EndPoints:</p> <br>
-        
-            <h2>Categorias</h2>
-            <button id="fetchCategorias">Listar Categorias</button>
-            <ul id="categoriasList"></ul> <br>
-        
-            <h2>Tarefas</h2>
-            <button id="fetchTarefas">Listar Tarefas</button>
-            <ul id="tarefasList"></ul> <br>
-        
-            <a href="https://estudosapi.azurewebsites.net/Tarefas/GetAll" target="_blank" rel="noopener noreferrer" class="links">
-                <img src="img/azure-svgrepo-com.png" width="50">
-                <p>API no Azure</p>
-            </a> <br>
-            <a href="https://github.com/lucasns06/EstudosAPI" target="_blank" rel="noopener noreferrer" class="links">
-                <img src="img/github.png" width="50">
-                <p>API no GitHub</p>
-            </a>
+            <h1>RPG API</h1>
+            <img src="img/sword.png" width="100" class="imgCenter">
+            <p>Você pode gerenciar armas e personagens. <br> EndPoints:</p> <br>
+    
+            <h2>Armas</h2>
+            <button onclick="fetchWeapons()">Listar todas as armas</button>
+            <ul id="weaponsList"></ul>
+    
+            <h2>Personagens</h2>
+            <button onclick="fetchCharacters()">Listar todos os personagens</button>
+            <ul id="charactersList"></ul>
+    
+            <a href="https://rpgapilucasns.azurewebsites.net/" target="_blank" rel="noopener noreferrer">API no Azure</a>
         </div>
-        
     </section>
 
     <script src="script.js"></script>
