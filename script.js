@@ -1,57 +1,47 @@
-// script.js
-document.addEventListener("DOMContentLoaded", () => {
-    const weaponsList = document.getElementById("weaponsList");
-    const charactersList = document.getElementById("charactersList");
+const baseUrl = "https://estudosapi.azurewebsites.net";
 
-    // Função para buscar armas
-    async function fetchWeapons() {
-        try {
-            const response = await fetch("http://lucasns06.somee.com/RpgApi/Armas/GetAll");
-            if (!response.ok) throw new Error("Erro ao buscar armas");
-            
-            // Converte o resultado em JSON
-            const data = await response.json();
-
-            // Limpa a lista antes de exibir
-            weaponsList.innerHTML = "";
-
-            // Adiciona os itens na lista
-            data.forEach(weapon => {
+document.getElementById("fetchCategorias").addEventListener("click", () => {
+    fetch(`${baseUrl}/Categorias/GetAll`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro ao carregar categorias.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            const categoriasList = document.getElementById("categoriasList");
+            categoriasList.innerHTML = ""; // Limpa a lista antes de popular
+            data.forEach(categoria => {
                 const li = document.createElement("li");
-                li.textContent = `ID: ${weapon.id}, Nome: ${weapon.nome}, Dano: ${weapon.dano}, Personagem ID: ${weapon.personagemId || 'Nenhum'}`;
-                weaponsList.appendChild(li);
+                li.textContent = `ID: ${categoria.id} | Nome: ${categoria.nome}`;
+                categoriasList.appendChild(li);
             });
-        } catch (error) {
+        })
+        .catch(error => {
             console.error(error);
-            weaponsList.innerHTML = "<li>Erro ao carregar armas</li>";
-        }
-    }
+            alert("Erro ao carregar categorias.");
+        });
+});
 
-    // Função para buscar personagens
-    async function fetchCharacters() {
-        try {
-            const response = await fetch("http://lucasns06.somee.com/RpgApi/Personagens/GetAll");
-            if (!response.ok) throw new Error("Erro ao buscar personagens");
-            
-            // Converte o resultado em JSON
-            const data = await response.json();
-
-            // Limpa a lista antes de exibir
-            charactersList.innerHTML = "";
-
-            // Adiciona os itens na lista
-            data.forEach(character => {
+document.getElementById("fetchTarefas").addEventListener("click", () => {
+    fetch(`${baseUrl}/Tarefas/GetAll`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro ao carregar tarefas.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            const tarefasList = document.getElementById("tarefasList");
+            tarefasList.innerHTML = ""; // Limpa a lista antes de popular
+            data.forEach(tarefa => {
                 const li = document.createElement("li");
-                li.textContent = `ID: ${character.id}, Nome: ${character.nome}, Classe: ${character.classe || 'Desconhecida'}`;
-                charactersList.appendChild(li);
+                li.textContent = `ID: ${tarefa.id} | Nome: ${tarefa.nome}`;
+                tarefasList.appendChild(li);
             });
-        } catch (error) {
+        })
+        .catch(error => {
             console.error(error);
-            charactersList.innerHTML = "<li>Erro ao carregar personagens</li>";
-        }
-    }
-
-    // Event Listeners
-    document.getElementById("loadWeapons").addEventListener("click", fetchWeapons);
-    document.getElementById("loadCharacters").addEventListener("click", fetchCharacters);
+            alert("Erro ao carregar tarefas.");
+        });
 });
