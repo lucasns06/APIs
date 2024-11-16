@@ -69,7 +69,7 @@ function buscarCategorias() {
         });
 }
 
-function buscarTerafas() {
+function buscarTarefas() {
     fetch('https://estudosapi.azurewebsites.net/Tarefas/GetAll')
         .then(response => {
             if (!response.ok) {
@@ -100,12 +100,12 @@ function buscarCategoriasTarefas() {
             return response.json();
         })
         .then(data => {
-            const categoriasList = document.getElementById("categoriasList");
-            categoriasList.innerHTML = "";
+            const categoriasTarefasList = document.getElementById("categoriasTarefasList");
+            categoriasTarefasList.innerHTML = "";
             data.forEach(categoria => {
                 const li = document.createElement("li");
-                li.textContent = `ID: ${categoria.id} | Nome: ${categoria.nome} | Tarefas: ${categoria.tarefas}`;
-                categoriasList.appendChild(li);
+                li.textContent = `ID: ${categoria.id} | Nome: ${categoria.nome}`;
+                categoriasTarefasList.appendChild(li);
 
                 const ulTarefas = document.createElement("ul");
 
@@ -115,7 +115,7 @@ function buscarCategoriasTarefas() {
                     ulTarefas.appendChild(liTarefa);
                 });
 
-                categoriasList.appendChild(ulTarefas);
+                categoriasTarefasList.appendChild(ulTarefas);
             });
         })
         .catch(error => {
