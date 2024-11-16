@@ -18,7 +18,7 @@ function buscarArmas() {
 }
 
 function buscarPersonagens() {
-    fetch('https://estudosapi.azurewebsites.net/Categorias/GetAll')  
+    fetch('https://rpgapilucasns.azurewebsites.net/Categorias/GetAll')  
         .then(response => response.json())
         .then(data => {
             const charactersList = document.getElementById("charactersList");
