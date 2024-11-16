@@ -9,6 +9,7 @@ body{
     background: linear-gradient(84deg, #004fff30, transparent);
 }
 section{
+    padding-top: 3rem;
     display: flex;
     margin: auto;
     width: max-content;

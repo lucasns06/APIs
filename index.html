@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>RPG API Front-End</title>
+    <title>Lucas Nascimento</title>
 </head>
-<body>
-    <h1>RPG API - Front-End</h1>
-    <p>Visualize as informações consumidas diretamente da API!</p>
 
+<body>
+    <h1>Minhas APIs</h1>
     <section>
         <div class="APIcontainer">
             <h1>RPG API</h1>
             <img src="img/sword.png" width="100" class="imgCenter">
-            <p>Você pode gerenciar armas e personagens. <br> EndPoints:</p> <br>
-    
+            <p>Você pode gerenciar armas e personagens. <br>
             <h2>Armas</h2>
-            <button onclick="fetchWeapons()">Listar todas as armas</button>
-            <ul id="weaponsList"></ul>
-    
+            <button onclick="buscarArmas()">Listar todas as armas</button>
+            <ul id="armasLista">
+
+            </ul>
+
             <h2>Personagens</h2>
-            <button onclick="fetchCharacters()">Listar todos os personagens</button>
-            <ul id="charactersList"></ul>
-    
-            <a href="https://rpgapilucasns.azurewebsites.net/" target="_blank" rel="noopener noreferrer">API no Azure</a>
+            <button onclick="buscarPersonagens()">Listar todos os personagens</button>
+            <ul id="personagensLista"></ul>
+
+
+        </div>
+        <div class="APIcontainer">
+            <h1>ESTUDOS API</h1>
+            <img src="img/study.png" width="100" class="imgCenter">
+            <p>Gerencie categorias e tarefas. <br> 
+
+            <h2>Categorias</h2>
+            <button id="fetchCategorias">Listar Categorias</button>
+            <ul id="categoriasList"></ul> <br>
+
+            <h2>Tarefas</h2>
+            <button id="fetchTarefas">Listar Tarefas</button>
+            <ul id="tarefasList"></ul> <br>
+
+            <a href="https://github.com/lucasns06/EstudosAPI" target="_blank" rel="noopener noreferrer" class="links">
+                <img src="img/github.png" width="50">
+                <p>API no GitHub</p>
+            </a>
         </div>
     </section>
 
     <script src="script.js"></script>
 </body>
+
 </html>
