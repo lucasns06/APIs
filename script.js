@@ -21,13 +21,13 @@ function buscarPersonagens() {
     fetch('https://rpgapilucasns.azurewebsites.net/Personagens/GetAll')  
         .then(response => response.json())
         .then(data => {
-            const charactersList = document.getElementById("charactersList");
-            charactersList.innerHTML = ''; 
+            const personagensLista = document.getElementById("personagensLista");
+            personagensLista.innerHTML = ''; 
 
             data.forEach(character => {
                 const listItem = document.createElement("li");
                 listItem.textContent = `${character.nome}`;
-                charactersList.appendChild(listItem);
+                personagensLista.appendChild(listItem);
             });
         })
         .catch(error => {
