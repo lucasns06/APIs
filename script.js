@@ -1,9 +1,9 @@
 function buscarArmas() {
-    fetch('https://rpgapilucasns.azurewebsites.net/Armas/GetAll') 
+    fetch('https://rpgapilucasns.azurewebsites.net/Armas/GetAll')
         .then(response => response.json())
         .then(data => {
             const armasLista = document.getElementById("armasLista");
-            armasLista.innerHTML = '';  
+            armasLista.innerHTML = '';
 
             data.forEach(weapon => {
                 const listaItem = document.createElement("li");
@@ -18,11 +18,11 @@ function buscarArmas() {
 }
 
 function buscarPersonagens() {
-    fetch('https://rpgapilucasns.azurewebsites.net/Personagens/GetAll')  
+    fetch('https://rpgapilucasns.azurewebsites.net/Personagens/GetAll')
         .then(response => response.json())
         .then(data => {
             const charactersList = document.getElementById("charactersList");
-            charactersList.innerHTML = ''; 
+            charactersList.innerHTML = '';
 
             data.forEach(character => {
                 const listItem = document.createElement("li");
@@ -40,15 +40,14 @@ window.addEventListener('DOMContentLoaded', () => {
     const weaponsButton = document.querySelector("button[onclick='fetchWeapons()']");
     const charactersButton = document.querySelector("button[onclick='fetchCharacters()']");
 
-    // Adicionar os event listeners aos botões
     weaponsButton.addEventListener('click', fetchWeapons);
     charactersButton.addEventListener('click', fetchCharacters);
 });
 
 const baseUrl = "https://estudosapi.azurewebsites.net";
 
-document.getElementById("fetchCategorias").addEventListener("click", () => {
-    fetch(`${baseUrl}/Categorias/GetAll`)
+function buscarCategorias() {
+    fetch('https://estudosapi.azurewebsites.net/Categorias/GetAll')
         .then(response => {
             if (!response.ok) {
                 throw new Error("Erro ao carregar categorias.");
@@ -57,7 +56,7 @@ document.getElementById("fetchCategorias").addEventListener("click", () => {
         })
         .then(data => {
             const categoriasList = document.getElementById("categoriasList");
-            categoriasList.innerHTML = ""; // Limpa a lista antes de popular
+            categoriasList.innerHTML = "";
             data.forEach(categoria => {
                 const li = document.createElement("li");
                 li.textContent = `ID: ${categoria.id} | Nome: ${categoria.nome}`;
@@ -68,10 +67,10 @@ document.getElementById("fetchCategorias").addEventListener("click", () => {
             console.error(error);
             alert("Erro ao carregar categorias.");
         });
-});
+}
 
-document.getElementById("fetchTarefas").addEventListener("click", () => {
-    fetch(`${baseUrl}/Tarefas/GetAll`)
+function buscarTerafas() {
+    fetch('https://estudosapi.azurewebsites.net/Tarefas/GetAll')
         .then(response => {
             if (!response.ok) {
                 throw new Error("Erro ao carregar tarefas.");
@@ -80,7 +79,7 @@ document.getElementById("fetchTarefas").addEventListener("click", () => {
         })
         .then(data => {
             const tarefasList = document.getElementById("tarefasList");
-            tarefasList.innerHTML = ""; // Limpa a lista antes de popular
+            tarefasList.innerHTML = "";
             data.forEach(tarefa => {
                 const li = document.createElement("li");
                 li.textContent = `ID: ${tarefa.id} | Nome: ${tarefa.nome}`;
@@ -91,4 +90,36 @@ document.getElementById("fetchTarefas").addEventListener("click", () => {
             console.error(error);
             alert("Erro ao carregar tarefas.");
         });
-});
+}
+function buscarCategoriasTarefas() {
+    fetch('https://estudosapi.azurewebsites.net/Categorias/GetAll')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro ao carregar categorias.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            const categoriasList = document.getElementById("categoriasList");
+            categoriasList.innerHTML = "";
+            data.forEach(categoria => {
+                const li = document.createElement("li");
+                li.textContent = `ID: ${categoria.id} | Nome: ${categoria.nome} | Tarefas: ${categoria.tarefas}`;
+                categoriasList.appendChild(li);
+
+                const ulTarefas = document.createElement("ul");
+
+                categoria.tarefas.forEach(tarefa => {
+                    const liTarefa = document.createElement("li");
+                    liTarefa.textContent = `ID: ${tarefa.id} | Nome: ${tarefa.nome}`;
+                    ulTarefas.appendChild(liTarefa);
+                });
+
+                categoriasList.appendChild(ulTarefas);
+            });
+        })
+        .catch(error => {
+            console.error(error);
+            alert("Erro ao carregar categorias.");
+        });
+}

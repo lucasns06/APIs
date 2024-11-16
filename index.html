@@ -14,31 +14,37 @@
         <div class="APIcontainer">
             <h1>RPG API</h1>
             <img src="img/sword.png" width="100" class="imgCenter">
-            <p>Você pode gerenciar armas e personagens. <br>
-            <h2>Armas</h2>
+            <p>Você pode gerenciar armas e personagens. <br> <br>
+            <h2>Armas</h2> <br>
             <button onclick="buscarArmas()">Listar todas as armas</button>
-            <ul id="armasLista">
+            <ul id="armasLista"></ul> <br>
 
-            </ul>
-
-            <h2>Personagens</h2>
+            <h2>Personagens</h2> <br>
             <button onclick="buscarPersonagens()">Listar todos os personagens</button>
-            <ul id="personagensLista"></ul>
+            <ul id="personagensLista"></ul> <br> <br>
 
 
+            <a href="https://github.com/lucasns06/rpgapi" target="_blank" rel="noopener noreferrer" class="links">
+                <img src="img/github.png" width="50">
+                <p>API no GitHub</p>
+            </a>
         </div>
         <div class="APIcontainer">
             <h1>ESTUDOS API</h1>
             <img src="img/study.png" width="100" class="imgCenter">
-            <p>Gerencie categorias e tarefas. <br> 
+            <p>Gerencie categorias e tarefas. <br>  <br>
 
-            <h2>Categorias</h2>
-            <button id="fetchCategorias">Listar Categorias</button>
+            <h2>Categorias</h2> <br>
+            <button onclick="buscarCategorias()">Listar Categorias</button>
             <ul id="categoriasList"></ul> <br>
 
-            <h2>Tarefas</h2>
-            <button id="fetchTarefas">Listar Tarefas</button>
+            <h2>Tarefas</h2> <br>
+            <button onclick="buscarTarefas()">Listar Tarefas</button>
             <ul id="tarefasList"></ul> <br>
+
+            <h2>Categorias com Tarefas</h2> <br>
+            <button onclick="buscarCategoriasTarefas()">Listar Tarefas</button>
+            <ul id="tarefasList"></ul> <br> <br>
 
             <a href="https://github.com/lucasns06/EstudosAPI" target="_blank" rel="noopener noreferrer" class="links">
                 <img src="img/github.png" width="50">
